@@ -1,0 +1,370 @@
+/* Body */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #181818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  margin: 0;
+  color: #f1f1f1;
+  padding-top: 60px;
+}
+
+/* Container */
+.container {
+  background-color: #202020;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 650px;
+  border-radius: 8px;
+}
+
+/* Headings */
+h2 {
+  background-color: #555;
+  padding: 10px 0;
+  border-radius: 30px;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Inputs and Textarea */
+textarea, input[type="file"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+textarea::placeholder {
+  color: #888;
+  font-size: 14px; /* Smaller placeholder text */
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Buttons & Labels */
+button, label {
+  background-color: #555;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #f1f1f1;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, label:hover {
+  background-color: #666;
+  transform: scale(1.05);
+}
+
+/* Images */
+.images .image-with-info {
+  display: flex;
+  align-items: center;
+  border: 1px solid #555; /* Border around the image and its info */
+  padding: 10px;
+  border-radius: 8px;
+  margin: 20px auto; /* Added based on your previous margin value */
+}
+
+.images .image-with-info img {
+  flex: 1;
+  max-width: 50%;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.images .image-with-info .image-info {
+  flex: 2;
+  font-size: 14px; /* Smaller text size */
+  text-align: center;
+}
+
+.images .timestamp {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2px 4px;
+  border-radius: 2px;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Profile & Guest Icons */
+.profile-icon, .guest-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #f1f1f1;
+  transition: background 0.3s;
+}
+
+.profile-icon:hover, .guest-icon:hover {
+  background-color: #777;
+}
+
+/* Profile Menu */
+.profile-menu, .guest-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  transform-origin: top right;
+  transform: scaleY(0);
+  transition: transform 0.3s ease-in-out;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  width: 200px;  /* or adjust to your preference */
+  visibility: hidden;
+  opacity: 0;
+}
+
+.profile-header img {
+  display: block; /* Ensures it takes the full space of its parent if needed */
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.profile-name, .profile-role, .profile-date-joined {
+  margin: 10px 0;
+}
+
+.profile-name[contenteditable="true"] {
+  border: 1px solid white;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+/* Guest Profile Menu */
+.guest-menu {
+  position: fixed;
+  top: -100%;
+  right: 10px;
+  width: 200px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  transition: top 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  padding: 10px;
+  z-index: 999;
+}
+
+.profile-name, .profile-role {
+  text-align: center;
+  padding: 10px;
+  color: #888;
+}
+
+.profile-date-joined {
+  text-align: right;
+  color: #888;
+  font-size: 0.7em;
+  background-color: #1c1c1c;
+  padding: 3px 5px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+/* Top Bar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: calc(50% - 325px); /* Centers the top bar relative to the viewport */
+  width: calc(90%); /* Matches the width of .container */
+  max-width: 650px; /* Matches the max-width of .container */
+  height: 60px;
+  background-color: #202020;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+#searchBar {
+  flex: 9;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #555;
+  outline: none;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+#searchBar::placeholder {
+  color: #888;
+}
+
+/* Image Container */
+#imagesContainer img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Notification */
+.notification {
+  display: none;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: 1px solid #d90000;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label::before {
+  content: attr(data-content);
+}
+
+#fileNameDisplay {
+  margin-left: 10px;  /* Space between the label (button) and the filename */
+  vertical-align: middle; /* Align it with the button, if needed */
+  /* Add any other styling you desire */
+}
+
+.image-wrapper {
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0; /* Adjusting the margin so there's space between posts vertically */
+  display: block; /* Changing from inline-block to block */
+}
+
+.image-wrapper img {
+  max-width: 200px;
+}
+
+.image-wrapper button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+}
+
+.insta-post {
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.post-image img {
+  width: 100%;
+  display: block;
+}
+
+.post-info {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.profile-image {
+  width: 40px; /* Adjust to your preferred size */
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px; /* Adds a space between image and username */
+}
+
+.username {
+  margin-bottom: 10px; /* Adds a space between caption and date */
+  width: 100%;
+}
+
+.post-date {
+  width: 100%;
+  text-align: right;
+  font-size: 12px; /* Adjust to your preferred size */
+}
+
+.profile-header {
+  width: 100px; /* Adjust accordingly */
+  height: 100px; /* Adjust accordingly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; 
+  border: 2px solid black; /* Your black border */
+  border-radius: 50%; /* Making the border rounded */
+  overflow: hidden; /* Any part of the image exceeding the circular boundary will be hidden */
+}
+
+.post-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  width: 100%;
+  padding: 10px; 
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center; /* Centers the user-info horizontally */
+  margin-bottom: 10px; /* Adds a space between user-info and caption */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center; /* Centers the user-info horizontally */
+  margin-bottom: 10px; /* Adds a space between user-info and caption */
+}
+
+.guest-icon-container {
+  position: relative; 
+}
+
+.guest-icon {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.guest-menu {
+  top: -100%;
+}

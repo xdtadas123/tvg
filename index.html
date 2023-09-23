@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="top-bar">
+        <input type="text" id="searchBar" placeholder="Search...">
+    </div>
+
+    <div class="container">
+        <div class="notification" id="notification" style="display: none;">Please add some text before uploading the image.</div>
+
+        <form id="uploadForm">
+            <label for="imageInput" data-content="Select Image"></label>
+            <input type="file" id="imageInput" name="image" accept="image/*">
+            <span id="fileNameDisplay"></span>
+            <span id="imageName" class="image-name"></span>
+            <textarea id="imageText" placeholder="Add some text..."></textarea>
+            <button type="submit">Upload</button>
+        </form>
+
+        <div id="imagesContainer"></div>
+    </div>
+
+    <div class="profile-icon">
+        <span>👤</span>
+    </div>
+
+    <div class="profile-menu" style="display: none;">
+        <div class="profile-header">
+            <img src="path_to_default_profile.jpg" alt="Profile Picture" id="profilePic">
+            <div class="camera-icon">📸</div>
+        </div>
+        <div class="profile-details">
+            <div class="profile-name" id="profileName" contenteditable="false">User1</div>
+            <div class="profile-role">Role: Admin</div>
+            <div class="profile-date-joined">Joined: <span id="joinDate">Date</span></div>
+        </div>
+    </div>
+
+    <div class="guest-icon">
+        <span>👤</span>
+    </div>
+
+    <div class="guest-menu">
+        <div class="profile-name">Guest User</div>
+        <div class="profile-role">Role: Guest</div>
+        <div class="profile-date-joined">Joined: <span id="guestJoinDate">Date</span></div>
+    </div>
+
+    <script src="/client.js"></script>
+    <script src="scripts.js"></script>
+
+    <script>
+
+        // Profile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('searchBar').addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();  // "this" refers to the search bar itself
+        const posts = document.querySelectorAll('.insta-post');
+
+        posts.forEach(post => {
+            const description = post.querySelector('.post-caption') 
+                ? post.querySelector('.post-caption').textContent.toLowerCase().trim() 
+                : "";
+
+            if (description.includes(query)) {
+                post.style.display = 'block';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    });
+});
+
+        // Placeholder function for logging in with Google.
+        function loginWithGoogle() {
+            console.log("Logging in with Google...");
+            // ... other code ...
+        }
+
+        // Guest menu interaction
+        const guestIcon = document.querySelector('.guest-icon');
+if (guestIcon) {
+    guestIcon.addEventListener('click', function() {
+        const menu = document.querySelector('.guest-menu');
+        if (menu) {
+            if (menu.style.top === '-100%') {
+                menu.style.top = '10px';
+            } else {
+                menu.style.top = '-100%';
+            }
+        }
+    });
+}
+
+
+        // Handle image upload
+        function handleUpload(event) {
+        event.preventDefault();  // Prevent the form from submitting
+        
+            let postText = document.createElement('div');
+            postText.className = "post-caption";
+            postText.innerText = caption;
+
+            let imageFile = document.getElementById('imageInput').files[0];
+            let caption = document.getElementById('imageText').value;
+
+            if (imageFile && caption.trim()) {
+                let postContainer = document.createElement('div');
+                postContainer.className = "insta-post";
+
+                let postImage = document.createElement('div');
+                postImage.className = "post-image";
+                let img = document.createElement('img');
+                img.src = URL.createObjectURL(imageFile); 
+                img.style.width = "100%";
+                postImage.appendChild(img);
+
+                let postFooter = document.createElement('div');
+                postFooter.className = "post-footer";
+
+                let postText = document.createElement('div');
+                postText.className = "post-caption";
+                postText.innerText = caption;
+
+                let userDetails = document.createElement('div');
+                userDetails.className = "user-details";
+
+                let profileImg = document.createElement('img');
+                profileImg.src = "path_to_default_profile.jpg";
+                profileImg.className = "profile-image";
+
+                let username = document.createElement('span');
+                username.className = "username";
+                username.innerText = "Guest";
+
+                userDetails.appendChild(profileImg);
+                userDetails.appendChild(username);
+
+                let postDate = document.createElement('div');
+                postDate.className = "post-date";
+                postDate.innerText = new Date().toLocaleString();  // Current date and time
+
+                postFooter.appendChild(postText);
+                postFooter.appendChild(userDetails);
+                postFooter.appendChild(postDate);
+
+                postContainer.appendChild(postImage);
+                postContainer.appendChild(postFooter);
+
+                document.getElementById('imagesContainer').appendChild(postContainer);
+            } else {
+                alert("Please upload an image and provide a caption.");
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
